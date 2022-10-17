@@ -172,7 +172,8 @@ void Init()
     );
 }
 int k = 0;
-
+float h = 0.0f;
+float dis = 1;
 void Release()
 {
     glfwDestroyWindow(window);
@@ -185,7 +186,6 @@ void Update()
     {      
         for (float theta = 0; theta < 360; theta+=72)
         {
-   
             star[i].pos.x = -glm::sin(glm::radians(theta+k)) * 0.5f;
             star[i].pos.y = glm::cos(glm::radians(theta+k)) * 0.5f; // * 0.5
             i++;
@@ -194,6 +194,19 @@ void Update()
 
         k += 1;
         if (k > 360) k = 0;
+        
+        if (h >= 1.0f)
+        {
+            dis = -1;
+            h = 1.0f;
+        }
+        if (h <= 0.3f)
+        {
+            dis = 1;
+            h = 0.3f;
+        }
+        h += 0.01f * dis;
+
         //------------레이어 1-----------------
         layerOne.translate = glm::mat3(
             1, 0, 0,
@@ -218,7 +231,7 @@ void Update()
             0, 0.3, 1
         );
         layerTwo.scale = glm::mat3(
-            1, 0, 0,
+            h, 0, 0,
             0, 0.3, 0,
             0, 0, 1
         );
@@ -267,6 +280,7 @@ void Update()
         for (int i = 0; i < 360; i++)
         {
             transformedCircle_layer_1[i].pos = layerOne.translate * layerOne.rotation * layerOne.scale * circle_layer_1[i].pos;
+
         }
 
         // ----------------2 번 레이어----------------
