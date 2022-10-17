@@ -238,7 +238,7 @@ void Update()
         layerTwo.rotation = glm::mat3(
             1, 0, 0,
             0, 1, 0,
-            0, 0, 1
+            0, h, 1
         );
 
         //------------별-----------------
@@ -329,7 +329,87 @@ void Update()
         glColor4f(transformedStar[a].r, transformedStar[a].g, transformedStar[a].b, transformedStar[a].a);
         glVertex3f(transformedStar[a].pos.x, transformedStar[a].pos.y, 0.0f);
         glEnd();
-            
+
+        for (int theta = 0; theta <= 360; theta++)
+        {
+                switch (theta % 36)
+                {
+                case 0:
+                case 35:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 1:
+                case 34:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 2:
+                case 33:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 3:
+                case 32:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 4:
+                case 31:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 5:
+                case 30:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 6:
+                case 29:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 7:
+                case 28:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 8:
+                case 27:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 9:
+                case 26:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 10:
+                case 25:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 11:
+                case 24:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 12:
+                case 23:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 13:
+                case 22:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 14:
+                case 21:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 15:
+                case 20:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 16:
+                case 19:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                case 17:
+                case 18:
+                    transformedCircle_layer_2[theta].pos.y += 0.01f;
+                    break;
+                }
+        }
+
+        //for (int theta = 0; theta <= 360; theta+=5)
+        //{
+        //    float y = 0;
+        //    int des = 1;
+        //    y += 0.04*des;
+
+        //    if (y>=0.2) {
+        //        des = -1;
+        //        y = 0.2;
+        //    }
+        //    if (y <= 0.0f) {
+        //        des = 1;
+        //        y = 0.0f;
+        //    }
+        //    transformedCircle_layer_2[theta].pos.y+=y;
+        //}
+
+
         //-----------원그리기-----------
         glBegin(GL_LINE_STRIP);
         for (int theta = 0; theta < 360; theta++)
